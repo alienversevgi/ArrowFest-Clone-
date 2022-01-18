@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class Arrow : MonoBehaviour,IResettable
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Reset()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.transform.position = Vector3.zero;
+        this.transform.eulerAngles = Vector3.zero;
+        this.gameObject.SetActive(false);
     }
 }

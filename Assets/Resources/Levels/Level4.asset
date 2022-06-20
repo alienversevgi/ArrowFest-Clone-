@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb0d49a35f59a149a91454dbb2fc86d, type: 3}
+  m_Name: Level4
+  m_EditorClassIdentifier: 
+  RoadData: {fileID: 11400000, guid: 634565603f904e046ab8f8b58ec216cb, type: 2}
+  Gates:
+  - Left:
+      IsEnable: 1
+      Value: 15
+      OperationType: 2
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 20
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 4}
+  - Left:
+      IsEnable: 1
+      Value: 10
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 10
+      OperationType: 1
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 5}
+  - Left:
+      IsEnable: 1
+      Value: 30
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 25
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 10}
+  - Left:
+      IsEnable: 1
+      Value: 22
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 10
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 18}
+  - Left:
+      IsEnable: 1
+      Value: 12
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 10
+      OperationType: 1
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 28}
+  - Left:
+      IsEnable: 1
+      Value: 8
+      OperationType: 1
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 27
+      OperationType: 3
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 35}
+  - Left:
+      IsEnable: 1
+      Value: 2
+      OperationType: 2
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 112
+      OperationType: 2
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 37}
+  - Left:
+      IsEnable: 1
+      Value: 20
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 24
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 45}
+  Chibis:
+  - HP: 3
+    Position: {x: -5.7, y: 0.1, z: 28.8}
+    RotationDirection: 0
+    HittableBodyPart: 0
+  ChibiGroups:
+  - HP: 16
+    Position: {x: -1.7, y: 0.55, z: 10.7}
+    Chibies: []

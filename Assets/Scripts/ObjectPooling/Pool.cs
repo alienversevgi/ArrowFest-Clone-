@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool<T> where T : IResettable
+public class Pool<T> where T : IEntity
 {
     public List<T> members = new List<T>();
     public HashSet<T> unavailable = new HashSet<T>();

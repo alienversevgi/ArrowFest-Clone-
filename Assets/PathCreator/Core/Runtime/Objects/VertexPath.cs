@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PathCreation.Utility;
 using UnityEngine;
 
@@ -161,6 +162,9 @@ namespace PathCreation {
                 return localPoints.Length;
             }
         }
+
+
+        public List<Vector3> GetAllPoints => localPoints.ToList();
 
         public Vector3 GetTangent (int index) {
             return MathUtility.TransformDirection (localTangents[index], transform, space);

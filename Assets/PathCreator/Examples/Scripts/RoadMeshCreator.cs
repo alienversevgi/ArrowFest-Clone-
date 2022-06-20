@@ -6,6 +6,8 @@ namespace PathCreation.Examples {
     public class RoadMeshCreator : PathSceneTool {
 
         [SerializeField] public RoadMeshSettings roadMeshSettings;
+        [SerializeField] private Transform roadEndObject;
+        [SerializeField] private Transform roadStartObject;
 
         [SerializeField, HideInInspector]
         GameObject meshHolder;
@@ -113,6 +115,16 @@ namespace PathCreation.Examples {
             mesh.SetTriangles (underRoadTriangles, 1);
             mesh.SetTriangles (sideOfRoadTriangles, 2);
             mesh.RecalculateBounds ();
+
+            roadStartObject.position = path.GetPoint(0);
+            roadStartObject.rotation = path.GetRotation(0);
+
+            roadEndObject.position = path.GetPoint(path.NumPoints - 1);
+            roadEndObject.rotation = path.GetRotation(90, EndOfPathInstruction.Stop);
+            //roadEndObject.eulerAngles = new Vector3(
+            //    path.GetRotation(path.NumPoints - 1).eulerAngles.x,
+            //    path.GetRotation(path.NumPoints - 1).eulerAngles.y,
+            //    0); 
         }
 
         // Add MeshRenderer and MeshFilter components to this gameobject if not already attached

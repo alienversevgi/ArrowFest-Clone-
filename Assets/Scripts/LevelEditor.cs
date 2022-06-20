@@ -1,26 +1,41 @@
 ﻿using PathCreation;
 using PathCreation.Examples;
 using UnityEngine;
+using UnityEditor;
 
-public class LevelEditor : MonoBehaviour
+#if UNITY_EDITOR
+[CustomEditor(typeof(RoadDataSystem))]
+public class LevelEditor : Editor
 {
-    [SerializeField] private PathCreator pathCreator;
-    [SerializeField] private RoadMeshCreator roadMeshCreator;
+    RoadDataSystem roadDataSystem;
 
-    public RoadData roadData;
-
-    void Update()
+    public override void OnInspectorGUI()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            roadData.pathCreatorData = pathCreator.EditorData;
-            roadData.roadMeshSettings = roadMeshCreator.roadMeshSettings;
-        }
+        DrawDefaultInspector();
 
-        if (Input.GetKeyDown(KeyCode.R))
+        roadDataSystem = (RoadDataSystem)target;
+        if (GUILayout.Button("Save"))
         {
-            pathCreator.Initialize(roadData.pathCreatorData);
-            roadMeshCreator.Initialize(roadData.roadMeshSettings);
+            roadDataSystem.Save();
         }
     }
+
+
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.S))
+    //    {
+    //        roadData.bezierPathPoints = pathCreator.EditorData.bezierPath.GetPoints();
+    //        roadData.roadMeshSettings = roadMeshCreator.roadMeshSettings;
+    //        Debug.Log("Saved");
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.L))
+    //    {
+    //        pathCreator.Initialize(roadData.pathCreatorData, roadData.bezierPathPoints);
+    //        roadMeshCreator.Initialize(roadData.roadMeshSettings);
+    //        Debug.Log("Loaded");
+    //    }
+    //}
 }
+#endif

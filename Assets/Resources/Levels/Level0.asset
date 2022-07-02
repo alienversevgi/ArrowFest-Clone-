@@ -24,7 +24,7 @@ MonoBehaviour:
       Value: 15
       OperationType: 0
       HasMoveable: 0
-    Position: {x: 0, y: 0, z: 10}
+    Position: {x: 0, y: 0, z: 5}
   - Left:
       IsEnable: 1
       Value: 20
@@ -35,10 +35,10 @@ MonoBehaviour:
       Value: 10
       OperationType: 0
       HasMoveable: 0
-    Position: {x: 0, y: 0, z: 20}
+    Position: {x: 0, y: 0, z: 10}
   - Left:
       IsEnable: 1
-      Value: 16
+      Value: 2
       OperationType: 2
       HasMoveable: 0
     Right:
@@ -46,5 +46,6 @@ MonoBehaviour:
       Value: 20
       OperationType: 0
       HasMoveable: 0
-    Position: {x: 0, y: 0, z: 30}
+    Position: {x: 0, y: 0, z: 15}
   Chibis: []
+  ChibiGroups: []

@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb0d49a35f59a149a91454dbb2fc86d, type: 3}
+  m_Name: Level3
+  m_EditorClassIdentifier: 
+  RoadData: {fileID: 11400000, guid: 689041477ddb7514aa8a8e96617f76a2, type: 2}
+  Gates:
+  - Left:
+      IsEnable: 0
+      Value: 0
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 100
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 5}
+  - Left:
+      IsEnable: 1
+      Value: 15
+      OperationType: 0
+      HasMoveable: 1
+    Right:
+      IsEnable: 0
+      Value: 0
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 13}
+  - Left:
+      IsEnable: 1
+      Value: 10
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 30
+      OperationType: 1
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 21}
+  - Left:
+      IsEnable: 1
+      Value: 2
+      OperationType: 2
+      HasMoveable: 0
+    Right:
+      IsEnable: 0
+      Value: 0
+      OperationType: 1
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 29}
+  - Left:
+      IsEnable: 1
+      Value: 8
+      OperationType: 1
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 12
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 37}
+  - Left:
+      IsEnable: 1
+      Value: 14
+      OperationType: 0
+      HasMoveable: 0
+    Right:
+      IsEnable: 1
+      Value: 2
+      OperationType: 0
+      HasMoveable: 0
+    Position: {x: 0, y: 0, z: 45}
+  Chibis:
+  - Position: {x: -0.4, y: 0, z: 11.4}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: 0, y: 0, z: 15.4}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: 0.4, y: 0, z: 17}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: -0.58, y: 0, z: 17.7}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: 0.4, y: 0, z: 20.5}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: 0.4, y: 0, z: 22}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: -0.4, y: 0, z: 22}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: 0, y: 0, z: 23.56}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  - Position: {x: 0, y: 0, z: 27.98}
+    RotationDirection: 0
+    HittableBodyPart: -1
+  ChibiGroups: []

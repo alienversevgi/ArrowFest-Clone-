@@ -927,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 2520914034791445886}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.0022941, y: 0.423, z: -5.399}
-  m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 7343004385543475024}
   - {fileID: 7656441711026345245}
@@ -965,21 +965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66736b25c7ba3bb43b7ad82bfb55b8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDead: 0
-  subColliders:
-  - {fileID: 1483201213045348392}
-  - {fileID: 688279336465772235}
-  - {fileID: 8200237170928720136}
-  - {fileID: 586934956112094381}
-  - {fileID: 1079169923424892743}
-  - {fileID: 4980796353839238657}
-  - {fileID: 6232308403138885195}
-  - {fileID: 5598954057076757120}
-  - {fileID: 8995723263319246147}
-  - {fileID: 6365624520411205983}
-  - {fileID: 2808272514378067905}
-  - {fileID: 6453573610550909260}
-  - {fileID: 3462450321450612228}
+  _hp: 3
+  _subColliders: []
 --- !u!54 &9156754726958491165
 Rigidbody:
   m_ObjectHideFlags: 0

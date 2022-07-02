@@ -50,15 +50,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3b0f7c959e5b446860aac3dcdba616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows:
+  _speed: 2.7
+  _rows:
   - {fileID: 189589228778608610}
   - {fileID: 189589229960883067}
   - {fileID: 189589229638225174}
   - {fileID: 189589228477110957}
   - {fileID: 189589229984374911}
   - {fileID: 189589228963919763}
-  end: 2
-  speed: 2.7
 --- !u!65 &4979026305124249328
 BoxCollider:
   m_ObjectHideFlags: 0

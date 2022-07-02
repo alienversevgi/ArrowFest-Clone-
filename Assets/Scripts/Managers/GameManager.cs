@@ -4,40 +4,60 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+namespace Game
 {
-    public ArrowController SwordController;
-    public ArrowDeckManager ArrowDeckManager;
-    public LevelManager LevelManager;
-    public PoolManager PoolManager;
-
-    public TextMeshProUGUI text;
-
-    public ChibiGroup group;
-    private void Start()
+    public class GameManager : MonoBehaviour
     {
-        StartGame();
-    }
+        #region Fields
 
-    private void Update()
-    {
-        float current = 0;
-        current = Time.frameCount / Time.time;
-        int avgFrameRate = (int)current;
-        //Debug.Log(avgFrameRate.ToString() + " FPS");
-        text.text = avgFrameRate.ToString() + " FPS";
-    }
+        [SerializeField] private ArrowController _arrowController;
+        [SerializeField] private ArrowDeckManager _arrowDeckManager;
+        [SerializeField] private LevelManager _levelManager;
 
-    public void StartGame()
-    {
-        PoolManager.Initialize();
-        LevelManager.LoadLevel();
-        SwordController.Initialize(LevelManager.PathCreator.path, LevelManager.CurrentLevelData.RoadData.roadMeshSettings.roadWidth);
-        ArrowDeckManager.Initialize();
-    }
+        #endregion
 
-    public void GameOver()
-    {
+        #region Unity Methods
 
+        private void Start()
+        {
+            Initialize();
+            StartGame();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void Initialize()
+        {
+            _levelManager.Initialize();
+
+            PoolManager.Instance.Initialize();
+            EventManager.Instance.OnLevelCompleted.Register(NextLevel);
+            EventManager.Instance.OnLevelFailed.Register(RestartLevel);
+        }
+
+        private void StartGame()
+        {
+            _levelManager.LoadLevel();
+            _arrowController.Initialize(_levelManager.LevelRoadPath, _levelManager.RoadWith);
+            _arrowDeckManager.Initialize();
+        }
+
+        private void NextLevel()
+        {
+            PoolManager.Instance.ResetAll();
+            _levelManager.IncrementLevel();
+
+            StartGame();
+        }
+
+        private void RestartLevel()
+        {
+            PoolManager.Instance.ResetAll();
+            StartGame();
+        }
+
+        #endregion
     }
 }

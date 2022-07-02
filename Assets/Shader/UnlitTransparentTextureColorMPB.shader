@@ -3,10 +3,10 @@
 // - no lighting
 // - no lightmap support
 // - no per-material color
-Shader "Unlit/TransparentTextureColor" {
+Shader "Unlit/TransparentTextureColorMPT" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
-		_Color("Base Color", Color) = (1,1,1,1)
+		[PreRendererData]_Color("Base Color", Color) = (1,1,1,1)
 	}
 		SubShader{
 			Tags { "RenderType" = "Opaque" "Queue" = "Transparent" }

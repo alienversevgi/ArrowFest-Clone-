@@ -888,21 +888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66736b25c7ba3bb43b7ad82bfb55b8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDead: 0
-  subColliders:
-  - {fileID: 1720358512381402881}
-  - {fileID: 776819525858863586}
-  - {fileID: 8252717761370136097}
-  - {fileID: 824059145551160196}
-  - {fileID: 987247115000983662}
-  - {fileID: 5068173224996047144}
-  - {fileID: 6140385611324420450}
-  - {fileID: 5690835078425728425}
-  - {fileID: 9195692876895584874}
-  - {fileID: 6565595767448229494}
-  - {fileID: 2716356326070446312}
-  - {fileID: 6540669593027337829}
-  - {fileID: 3695075324643455277}
+  _hp: 15
+  _subColliders: []
 --- !u!54 &8960404855949779252
 Rigidbody:
   m_ObjectHideFlags: 0

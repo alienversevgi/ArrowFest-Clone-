@@ -5,99 +5,129 @@ using UnityEngine;
 using DG.Tweening.Plugins.Core.PathCore;
 using System.Collections;
 
-public class Door : MonoBehaviour
+namespace Game.Level
 {
-    private Color negativeColor = Color.red;
-    private Color positiveColor = Color.cyan;/*new Color32(80,221,255,255);*/
-
-    [SerializeField] private TextMeshPro text;
-    private DoorValue doorValue;
-    private Collider collider;
-    private Action passed;
-
-    public void Initialize(DoorValue doorValue, Action passedCallBack)
+    public class Door : MonoBehaviour
     {
-        this.doorValue = doorValue;
-        gameObject.SetActive(doorValue.IsEnable);
-        if (!doorValue.IsEnable)
-            return;
+        #region Fields
 
-        collider = this.GetComponent<Collider>();
-        collider.enabled = true;
-        this.gameObject.SetActive(true);
-        passed = passedCallBack;
+        [SerializeField] private TextMeshPro _valueText;
 
-        text.text = $"{GetOperationSymbol()}{doorValue.Value.ToString()}";
-        Color color = GetDoorColor(doorValue);
-        this.GetComponent<Renderer>().material.color = color;
+        private Color _negativeColor = Color.red;
+        private Color _positiveColor = Color.cyan;
 
-        if (doorValue.HasMoveable)
+        private DoorValue _doorValue;
+        private Collider _collider;
+        private Action _onPassedCallBack;
+        private Sequence _horizontalMoveSequence;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void OnTriggerEnter(Collider other)
         {
-            HorizontalMove();
-        }
-    }
-
-    private void HorizontalMove()
-    {
-        Sequence sequence = DOTween.Sequence();
-        sequence.Append(this.transform.DOLocalMoveX(4.77f, 1f).SetEase(Ease.InOutSine));
-        sequence.Append(this.transform.DOLocalMoveX(-4.77f, 1f).SetEase(Ease.InOutSine));
-        sequence.SetLoops(-1);
-    }
-
-    public void Disable()
-    {
-        collider.enabled = false;
-    }
-
-    private Color GetDoorColor(DoorValue doorValue)
-    {
-        Color color = Color.black;
-
-        if (doorValue.OperationType == OperationType.Addition || doorValue.OperationType == OperationType.Multiplication)
-            color = positiveColor;
-        else
-            color = negativeColor;
-
-        return color;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.LogError("OnTrigger " + text.text);
-        if (other != null)
-        {
-            //Debug.Log(other.gameObject.name);
-        }
-        if (other.GetComponent<ArrowDeckManager>() != null)
-        {
-            passed();
-            other.GetComponent<ArrowDeckManager>().ApplyOperation(doorValue);
-            this.gameObject.SetActive(false);
-        }
-    }
-
-    private char GetOperationSymbol()
-    {
-        char symbol = '$';
-        switch (doorValue.OperationType)
-        {
-            case OperationType.Addition:
-                symbol = '+';
-                break;
-            case OperationType.Subtraction:
-                symbol = '-';
-                break;
-            case OperationType.Multiplication:
-                symbol = 'X';
-                break;
-            case OperationType.Division:
-                symbol = '%';
-                break;
-            default:
-                break;
+            if (other.GetComponent<ArrowDeckManager>() != null)
+            {
+                _onPassedCallBack();
+                other.GetComponent<ArrowDeckManager>().ApplyOperation(_doorValue);
+                this.gameObject.SetActive(false);
+            }
         }
 
-        return symbol;
+        #endregion
+
+        #region Public Methods
+
+        public void Initialize(DoorValue doorValue, Action passedCallBack)
+        {
+            _doorValue = doorValue;
+            gameObject.SetActive(doorValue.IsEnable);
+
+            if (!doorValue.IsEnable)
+                return;
+
+            _collider = this.GetComponent<Collider>();
+            _collider.enabled = true;
+            _onPassedCallBack = passedCallBack;
+
+            SetupDoor();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void SetupDoor()
+        {
+            _valueText.text = $"{GetOperationSymbol()}{_doorValue.Value.ToString()}";
+            Color color = GetDoorColor(_doorValue);
+
+            MaterialPropertyBlock materialPropertyBlock = new MaterialPropertyBlock();
+            materialPropertyBlock.SetColor("_Color", color);
+
+            this.GetComponent<Renderer>().SetPropertyBlock(materialPropertyBlock);
+
+            if (_doorValue.HasMoveable)
+            {
+                HorizontalMove();
+            }
+        }
+
+        private void HorizontalMove()
+        {
+            _horizontalMoveSequence = DOTween.Sequence();
+            _horizontalMoveSequence.Append(this.transform.DOLocalMoveX(4.77f, 1f).SetEase(Ease.InOutSine));
+            _horizontalMoveSequence.Append(this.transform.DOLocalMoveX(-4.77f, 1f).SetEase(Ease.InOutSine));
+            _horizontalMoveSequence.SetLoops(-1);
+        }
+
+        public void Disable()
+        {
+            _horizontalMoveSequence.Kill();
+
+            if (gameObject.activeInHierarchy)
+            {
+                _collider.enabled = false;
+            }
+        }
+
+        private Color GetDoorColor(DoorValue doorValue)
+        {
+            Color color = Color.black;
+
+            if (doorValue.OperationType == OperationType.Addition || doorValue.OperationType == OperationType.Multiplication)
+                color = _positiveColor;
+            else
+                color = _negativeColor;
+
+            return color;
+        }
+
+        private char GetOperationSymbol()
+        {
+            char symbol = '$';
+            switch (_doorValue.OperationType)
+            {
+                case OperationType.Addition:
+                    symbol = '+';
+                    break;
+                case OperationType.Subtraction:
+                    symbol = '-';
+                    break;
+                case OperationType.Multiplication:
+                    symbol = 'X';
+                    break;
+                case OperationType.Division:
+                    symbol = '%';
+                    break;
+                default:
+                    break;
+            }
+
+            return symbol;
+        }
+
+        #endregion
     }
 }

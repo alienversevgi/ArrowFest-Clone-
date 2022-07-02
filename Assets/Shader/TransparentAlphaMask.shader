@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Unlit/TransparentAlphaMask" {
+Shader "Unlit/TransparentAlphaMask_Color" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
 		_AlphaTex("Alpha mask (R)", 2D) = "white" {}

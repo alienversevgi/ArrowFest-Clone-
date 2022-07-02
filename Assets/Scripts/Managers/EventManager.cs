@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-
-public class EventManager : Singleton<EventManager>
+﻿namespace Game
 {
-    public UnityEvent OutOfArrow;
-    public UnityEvent OnRoadCompleted;
-    public UnityEvent<int> OnDamageTaken;
+    public class EventManager : Singleton<EventManager>
+    {
+        public GameEvent OnDamageTaken;
+        public GameEvent OnLevelCompleted;
+        public GameEvent OnLevelFailed;
+        public GameEvent OnLevelLoaded;
+        public GameEvent OnOutOfArrow;
+    }
 }

@@ -2,47 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnverPool;
 
-public class Arrow : MonoBehaviour, IEntity
+namespace Game.Level
 {
-    public GameObject ghostPrefab;
-    public event Action<int> OnArrowHitted;
-
-    private Collider collider;
-
-    private void Awake()
+    public class Arrow : Entity
     {
-        collider = this.GetComponent<Collider>();
+        public override void Reset()
+        {
+            base.Reset();
+            this.transform.eulerAngles = Vector3.zero;
+        }
     }
-
-    public void Reset()
-    {
-        this.transform.position = Vector3.zero;
-        this.transform.eulerAngles = Vector3.zero;
-        this.gameObject.SetActive(false);
-    }
-
-    public void SetPositionAndEnable(Vector3 newPosition)
-    {
-        this.transform.localPosition = newPosition;
-        this.gameObject.SetActive(true);
-    }
- 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    var chibi = collision.gameObject.GetComponent<Chibi>();
-
-    //    if (collision != null && collision.gameObject.CompareTag("Chibi"))
-    //    {
-    //        if (!chibi.IsDead)
-    //        {
-    //            collider.isTrigger = true;
-    //        }
-    //    }
-    //}
-  
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    collider.isTrigger = false;
-    //}
 }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class GhibiGroupData
+namespace Game.Level
 {
-    public int HP;
-    public Vector3 Position;
-    public List<ChibiData> Chibies;
-    // Layout
+    [System.Serializable]
+    public class GhibiGroupData
+    {
+        public Vector3 Position;
+        public List<RowChibiData> rowChibiDatas;
+    }
 }

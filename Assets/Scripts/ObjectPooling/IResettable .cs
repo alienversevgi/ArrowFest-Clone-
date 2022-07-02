@@ -1,4 +1,7 @@
-﻿public interface IResettable
+﻿namespace EnverPool
 {
-    void Reset();
+    public interface IResettable
+    {
+        void Reset();
+    }
 }

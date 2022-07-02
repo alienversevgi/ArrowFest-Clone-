@@ -1,33 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnverPool;
 
-public class Gate : MonoBehaviour, IEntity
+namespace Game.Level
 {
-    [SerializeField] private Door leftDoor;
-    [SerializeField] private Door rightDoor;
-
-    public void Initialize(DoorValue left, DoorValue right)
+    public class Gate : Entity
     {
-        leftDoor.Initialize(left, OnPassed);
-        rightDoor.Initialize(right, OnPassed);
-    }
+        #region Fields
 
-    private void OnPassed()
-    {
-        leftDoor.Disable();
-        rightDoor.Disable();
-    }
+        [SerializeField] private Door _leftDoor;
+        [SerializeField] private Door _rightDoor;
 
-    public void SetPositionAndEnable(Vector3 newPosition)
-    {
-        this.transform.position = newPosition;
-        this.gameObject.SetActive(true);
-    }
+        #endregion
 
-    public void Reset()
-    {
-        this.gameObject.SetActive(false);
-        this.transform.position = Vector3.zero;
+        #region Public Methods
+
+        public void Initialize(DoorValue left, DoorValue right)
+        {
+            _leftDoor.Initialize(left, OnPassed);
+            _rightDoor.Initialize(right, OnPassed);
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            DisableDoors();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void OnPassed()
+        {
+            DisableDoors();
+            Utility.Timer.Instance.StartTimer(.5f, () => PoolManager.Instance.GatePool.Release(this));
+        }
+
+        private void DisableDoors()
+        {
+            _leftDoor.Disable();
+            _rightDoor.Disable();
+        }
+
+        #endregion
     }
 }

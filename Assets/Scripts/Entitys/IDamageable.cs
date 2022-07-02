@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IDamageable<T>
+namespace Game
 {
-    T HP { get; }
-
-    void Damage(T damage);
+    interface IDamageable<T>
+    {
+        void Damage(T damage);
+    }
 }

@@ -1,47 +1,50 @@
 ﻿using UnityEngine;
 
-public enum OperationType
+namespace Game.Level
 {
-    Addition,
-    Subtraction,
-    Multiplication,
-    Division
-}
-
-[System.Serializable]
-public class DoorValue
-{
-    public bool IsEnable;
-    public int Value;
-    public OperationType OperationType;
-    public bool HasMoveable;
-
-    public override string ToString()
+    public enum OperationType
     {
-        return $"{GetOperationSymbol(OperationType)}{Value}";
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division
     }
 
-    public char GetOperationSymbol(OperationType type)
+    [System.Serializable]
+    public class DoorValue
     {
-        char symbol = '$';
-        switch (type)
+        public bool IsEnable;
+        public int Value;
+        public OperationType OperationType;
+        public bool HasMoveable;
+
+        public override string ToString()
         {
-            case OperationType.Addition:
-                symbol = '+';
-                break;
-            case OperationType.Subtraction:
-                symbol = '-';
-                break;
-            case OperationType.Multiplication:
-                symbol = 'X';
-                break;
-            case OperationType.Division:
-                symbol = '%';
-                break;
-            default:
-                break;
+            return $"{GetOperationSymbol(OperationType)}{Value}";
         }
 
-        return symbol;
+        public char GetOperationSymbol(OperationType type)
+        {
+            char symbol = '$';
+            switch (type)
+            {
+                case OperationType.Addition:
+                    symbol = '+';
+                    break;
+                case OperationType.Subtraction:
+                    symbol = '-';
+                    break;
+                case OperationType.Multiplication:
+                    symbol = 'X';
+                    break;
+                case OperationType.Division:
+                    symbol = '%';
+                    break;
+                default:
+                    break;
+            }
+
+            return symbol;
+        }
     }
 }

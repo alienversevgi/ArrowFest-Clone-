@@ -1,5 +1,11 @@
-﻿
-public interface IFactory<T> 
+﻿using UnityEngine;
+
+namespace EnverPool
 {
-    T Create();
+    public interface IFactory<T>
+    {
+        T Create();
+
+        void ResetMember(GameObject pooledObject);
+    }
 }

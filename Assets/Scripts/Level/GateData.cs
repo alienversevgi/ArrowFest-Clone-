@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class GateData
+namespace Game.Level
 {
-    public DoorValue Left;
-    public DoorValue Right;
-
-    public Vector3 Position;
-
-    public override string ToString()
+    [System.Serializable]
+    public class GateData
     {
-        return $"Left {Left.ToString()}, Right {Right.ToString()} position : {Position.ToString()}";
+        public DoorValue Left;
+        public DoorValue Right;
+
+        public Vector3 Position;
+
+        public override string ToString()
+        {
+            return $"Left {Left.ToString()}, Right {Right.ToString()} position : {Position.ToString()}";
+        }
     }
 }
